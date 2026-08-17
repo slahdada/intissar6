@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isUserOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isDocOwner() {
+      return isAuthenticated() && (
+        (resource == null && request.resource.data.user_id == request.auth.uid) ||
+        (resource != null && resource.data.user_id == request.auth.uid)
+      );
+    }
+
+    // User profiles
+    match /user_profiles/{userId} {
+      allow read, write: if isUserOwner(userId);
+    }
+
+    // App Data Collections
+    match /vehicles/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /movements/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /invoices/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /sites/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /carriers/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /truck_loads/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /routes/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /users/{docId} {
+      allow read, write: if isDocOwner();
+    }
+    match /billing_batches/{docId} {
+      allow read, write: if isDocOwner();
+    }
+  }
+}

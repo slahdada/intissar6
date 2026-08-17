@@ -1,0 +1,8 @@
+{
+  "name": "Gestion Parc Véhicules",
+  "description": "Système de gestion et suivi des stocks et mouvements de véhicules neufs par numéro de châssis et par site.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

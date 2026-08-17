@@ -1,0 +1,136 @@
+{
+  "entities": {
+    "vehicles": {
+      "title": "Vehicles",
+      "description": "Vehicle fleet stock records for the user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "chassis_number": { "type": "string" },
+        "brand": { "type": "string" },
+        "model": { "type": "string" },
+        "status": { "type": "string" },
+        "current_site_id": { "type": "string" },
+        "arrival_date": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" }
+      },
+      "required": ["user_id", "chassis_number", "brand", "model"]
+    },
+    "movements": {
+      "title": "Movements",
+      "description": "Vehicle transfer, entry, and exit logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "vehicle_id": { "type": "string" },
+        "movement_type": { "type": "string" },
+        "movement_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["user_id", "vehicle_id", "movement_type"]
+    },
+    "invoices": {
+      "title": "Invoices",
+      "description": "Billing invoices for vehicle logistics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "invoice_number": { "type": "string" },
+        "client_name": { "type": "string" },
+        "total_ttc": { "type": "number" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["user_id", "invoice_number", "client_name"]
+    },
+    "sites": {
+      "title": "Sites",
+      "description": "Logistics sites and ports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "address": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["user_id", "name"]
+    },
+    "carriers": {
+      "title": "Carriers",
+      "description": "Transporters and drivers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "raisonSociale": { "type": "string" },
+        "nomChauffeur": { "type": "string" },
+        "telephone": { "type": "string" }
+      },
+      "required": ["user_id", "raisonSociale"]
+    },
+    "truck_loads": {
+      "title": "Truck Loads",
+      "description": "Camion charges for multi-car transports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "load_number": { "type": "string" },
+        "carrier_name": { "type": "string" }
+      },
+      "required": ["user_id", "load_number"]
+    },
+    "routes": {
+      "title": "Routes",
+      "description": "Logistics routes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "route_name": { "type": "string" }
+      },
+      "required": ["user_id", "route_name"]
+    },
+    "billing_batches": {
+      "title": "Billing Batches",
+      "description": "Batch invoices",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "batchNumber": { "type": "string" }
+      },
+      "required": ["user_id", "batchNumber"]
+    },
+    "users": {
+      "title": "Application Users",
+      "description": "Internal application user roles and profiles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "full_name": { "type": "string" },
+        "role": { "type": "string" },
+        "email": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["user_id", "full_name", "email", "role"]
+    },
+    "user_profiles": {
+      "title": "User Profiles",
+      "description": "Metadata for authenticated users",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "full_name": { "type": "string" },
+        "last_sync_at": { "type": "string" }
+      },
+      "required": ["email"]
+    }
+  }
+}
